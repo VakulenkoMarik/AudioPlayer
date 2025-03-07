@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361aad5d799d0c9429b103cc93934062, type: 3}
+  m_Name: JohnNewman
+  m_EditorClassIdentifier: 
+  Title: Love Me Again
+  Author: John Newman
+  Clip: {fileID: 8300000, guid: 0e684d2d6a99ca04b88100b49e63fe4d, type: 3}
+  BackgroundColor: {r: 0.5698112, g: 0.02727767, b: 0, a: 1}
+  Logo: {fileID: 21300000, guid: a313d92889ebf8f40bd1f1ccdfdd9549, type: 3}
