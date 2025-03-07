@@ -17,11 +17,32 @@ public class AudioPatchesActivator : MonoBehaviour
 
     [SerializeField]
     private AudioPanel panel;
+    
+    [SerializeField]
+    private Image background;
+
+    [SerializeField]
+    private Animator characterAnimator;
 
     private void Awake()
     {
         instance = this;
     }
+
+    public void Pause()
+    {
+        characterAnimator.SetBool("isDance", false);
+        AudioPlayer.Stop();
+    }
+
+    public void ActivatePatch(AudioPatch targetPatch)
+    {
+        background.color = targetPatch.BackgroundColor;
+        characterAnimator.SetBool("isDance", true);
+    }
+
+    public static void ActivatePatchObjects(AudioPatch patch)
+        => instance.ActivatePatch(patch);
 
     private void ActivateRandom()
     {

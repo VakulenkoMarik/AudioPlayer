@@ -308,8 +308,6 @@ MonoBehaviour:
   logo: {fileID: 1678258320}
   title: {fileID: 779228283}
   author: {fileID: 605530807}
-  background: {fileID: 1413151023}
-  characterAnimator: {fileID: 1771122493}
   animator: {fileID: 492799146}
 --- !u!1 &497259233
 GameObject:
@@ -1261,7 +1259,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1529922352}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1871090617}
+        m_TargetAssemblyTypeName: AudioPatchesActivator, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1529922352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,6 +2068,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc21f3a660ca4bb4c9446ced307fe455, type: 2}
   - {fileID: 11400000, guid: a6ec894468521cb4cab439b40c8baaea, type: 2}
   panel: {fileID: 492799148}
+  background: {fileID: 1413151023}
+  characterAnimator: {fileID: 1771122493}
 --- !u!82 &1871090618
 AudioSource:
   m_ObjectHideFlags: 0

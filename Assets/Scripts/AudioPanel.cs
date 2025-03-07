@@ -12,12 +12,6 @@ public class AudioPanel : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI author;
-
-    [SerializeField]
-    private Image background;
-
-    [SerializeField]
-    private Animator characterAnimator;
     
     public Animator animator;
     
@@ -28,8 +22,7 @@ public class AudioPanel : MonoBehaviour
 
     public void ShowData()
     {
-        background.color = targetPatch.BackgroundColor;
-        characterAnimator.SetBool("isDance", true);
+        AudioPatchesActivator.ActivatePatchObjects(targetPatch);
         
         logo.sprite = targetPatch.Logo;
 
