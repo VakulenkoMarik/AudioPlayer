@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -11,15 +13,10 @@ public class AudioPatchesActivator : MonoBehaviour
     
     [SerializeField]
     private List<AudioPatch> patches;
+    private List<AudioPatch> activePatches = new();
 
     [SerializeField]
     private AudioPanel panel;
-    
-    [SerializeField]
-    private Image background;
-
-    [SerializeField]
-    private Animator characterAnimator;
 
     private void Awake()
     {
@@ -28,14 +25,23 @@ public class AudioPatchesActivator : MonoBehaviour
 
     private void ActivateRandom()
     {
-        int randomIndex = Random.Range(0, patches.Count);
-        AudioPatch patch = patches[randomIndex];
-        
-        background.color = patch.BackgroundColor;
-        characterAnimator.SetBool("isDance", true);
+        AudioPatch patch = DeterminePatch();
         
         panel.SetPatch(patch);
         panel.animator.SetTrigger("Start");
+    }
+
+    private AudioPatch DeterminePatch()
+    {
+        if (activePatches.Count <= 0)
+            activePatches = patches.ToList();
+        
+        int randomIndex = Random.Range(0, activePatches.Count);
+        AudioPatch patch = activePatches[randomIndex];
+
+        activePatches.RemoveSwapBack(patch);
+
+        return patch;
     }
 
     public void ActivateRandomPatch()

@@ -4,20 +4,33 @@ using UnityEngine.UI;
 
 public class AudioPanel : MonoBehaviour
 {
-    public Image logo;
+    [SerializeField]
+    private Image logo;
+        
+    [SerializeField]
+    private TextMeshProUGUI title;
     
-    public TextMeshProUGUI title;
-    public TextMeshProUGUI author;
+    [SerializeField]
+    private TextMeshProUGUI author;
+
+    [SerializeField]
+    private Image background;
+
+    [SerializeField]
+    private Animator characterAnimator;
     
     public Animator animator;
-
+    
     private AudioPatch targetPatch;
-
+    
     public void SetPatch(AudioPatch patch)
         => targetPatch = patch;
 
     public void ShowData()
     {
+        background.color = targetPatch.BackgroundColor;
+        characterAnimator.SetBool("isDance", true);
+        
         logo.sprite = targetPatch.Logo;
 
         title.text = targetPatch.Title;

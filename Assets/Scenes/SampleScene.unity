@@ -308,6 +308,8 @@ MonoBehaviour:
   logo: {fileID: 1678258320}
   title: {fileID: 779228283}
   author: {fileID: 605530807}
+  background: {fileID: 1413151023}
+  characterAnimator: {fileID: 1771122493}
   animator: {fileID: 492799146}
 --- !u!1 &497259233
 GameObject:
@@ -2056,8 +2058,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc21f3a660ca4bb4c9446ced307fe455, type: 2}
   - {fileID: 11400000, guid: a6ec894468521cb4cab439b40c8baaea, type: 2}
   panel: {fileID: 492799148}
-  background: {fileID: 1413151023}
-  characterAnimator: {fileID: 1771122493}
 --- !u!82 &1871090618
 AudioSource:
   m_ObjectHideFlags: 0
