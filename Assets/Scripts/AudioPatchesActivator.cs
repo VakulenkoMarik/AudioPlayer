@@ -23,7 +23,10 @@ public class AudioPatchesActivator : MonoBehaviour
 
     [SerializeField]
     private Animator characterAnimator;
-
+    
+    [SerializeField]
+    private Animator lightAnimator;
+    
     private void Awake()
     {
         instance = this;
@@ -32,6 +35,7 @@ public class AudioPatchesActivator : MonoBehaviour
     public void Pause()
     {
         characterAnimator.SetBool("isDance", false);
+        lightAnimator.SetBool("isDance", false);
         AudioPlayer.Stop();
     }
 
@@ -39,6 +43,7 @@ public class AudioPatchesActivator : MonoBehaviour
     {
         background.color = targetPatch.BackgroundColor;
         characterAnimator.SetBool("isDance", true);
+        lightAnimator.SetBool("isDance", true);
     }
 
     public static void ActivatePatchObjects(AudioPatch patch)
