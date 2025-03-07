@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -12,18 +11,12 @@ public class AudioPatchesActivator : MonoBehaviour
     
     [SerializeField]
     private List<AudioPatch> patches;
+
+    [SerializeField]
+    private AudioPanel panel;
     
     [SerializeField]
     private Image background;
-    
-    [SerializeField]
-    private Image logo;
-    
-    [SerializeField]
-    private TextMeshProUGUI title;
-    
-    [SerializeField]
-    private TextMeshProUGUI author;
 
     private void Awake()
     {
@@ -32,18 +25,24 @@ public class AudioPatchesActivator : MonoBehaviour
 
     private void ActivateRandom()
     {
-        int randomIndex = Random.Range(0, patches.Count - 1);
+        int randomIndex = Random.Range(0, patches.Count);
         AudioPatch patch = patches[randomIndex];
 
-        background.color = patch.BackgroundColor;
-        logo.sprite = patch.Logo;
-
-        title.text = patch.Title;
-        author.text = patch.Author;
+        SetDataFromPatch(patch);
         
+        panel.animator.SetTrigger("Start");
         AudioPlayer.Play(patch.Clip);
     }
 
-    public static void ActivateRandomPatch()
+    private void SetDataFromPatch(AudioPatch patch)
+    {
+        background.color = patch.BackgroundColor;
+        panel.logo.sprite = patch.Logo;
+
+        panel.title.text = patch.Title;
+        panel.author.text = patch.Author;
+    }
+
+    public void ActivateRandomPatch()
         => instance.ActivateRandom();
 }
