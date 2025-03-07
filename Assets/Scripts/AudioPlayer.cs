@@ -14,8 +14,8 @@ public class AudioPlayer : MonoBehaviour
 
     public static void Play(AudioClip clip)
     {
-        Stop();
-        instance.source.PlayOneShot(clip);
+        instance.source.clip = clip;
+        instance.source.Play();
     }
 
     public static void Stop()

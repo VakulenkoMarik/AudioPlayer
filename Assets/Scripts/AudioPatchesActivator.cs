@@ -18,6 +18,9 @@ public class AudioPatchesActivator : MonoBehaviour
     [SerializeField]
     private Image background;
 
+    [SerializeField]
+    private Animator characterAnimator;
+
     private void Awake()
     {
         instance = this;
@@ -27,20 +30,12 @@ public class AudioPatchesActivator : MonoBehaviour
     {
         int randomIndex = Random.Range(0, patches.Count);
         AudioPatch patch = patches[randomIndex];
-
-        SetDataFromPatch(patch);
         
-        panel.animator.SetTrigger("Start");
-        AudioPlayer.Play(patch.Clip);
-    }
-
-    private void SetDataFromPatch(AudioPatch patch)
-    {
         background.color = patch.BackgroundColor;
-        panel.logo.sprite = patch.Logo;
-
-        panel.title.text = patch.Title;
-        panel.author.text = patch.Author;
+        characterAnimator.SetBool("isDance", true);
+        
+        panel.SetPatch(patch);
+        panel.animator.SetTrigger("Start");
     }
 
     public void ActivateRandomPatch()
