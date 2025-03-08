@@ -13,7 +13,8 @@ public class AudioPanel : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI author;
     
-    public Animator animator;
+    [field: SerializeField]
+    public Animator Animator { get; private set; }
     
     private AudioPatch targetPatch;
     
@@ -22,7 +23,7 @@ public class AudioPanel : MonoBehaviour
 
     public void ShowData()
     {
-        AudioPatchesActivator.ActivatePatchObjects(targetPatch);
+        AudioPatchesActivator.Instance.ActivatePatch(targetPatch);
         
         logo.sprite = targetPatch.Logo;
 
@@ -34,7 +35,9 @@ public class AudioPanel : MonoBehaviour
     
     public void ExitPanelAnimation()
     {
-        animator.SetInteger("ExitVersion", Random.Range(0, 3));
-        animator.SetTrigger("ExitTrigger");
+        Animator.SetInteger("ExitVersion", Random.Range(0, 3));
+        Animator.SetTrigger("ExitTrigger");
+        
+        AudioPatchesActivator.Instance.CanvasAnimator.SetBool("NewAudio", false);
     }
 }

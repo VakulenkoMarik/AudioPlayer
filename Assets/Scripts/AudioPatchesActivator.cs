@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class AudioPatchesActivator : MonoBehaviour
 {
-    private static AudioPatchesActivator instance;
+    public static AudioPatchesActivator Instance;
     
     [SerializeField]
     private List<AudioPatch> patches;
@@ -27,9 +27,12 @@ public class AudioPatchesActivator : MonoBehaviour
     [SerializeField]
     private Animator lightAnimator;
     
+    [field: SerializeField]
+    public Animator CanvasAnimator { get; private set; }
+    
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     public void Pause()
@@ -42,19 +45,18 @@ public class AudioPatchesActivator : MonoBehaviour
     public void ActivatePatch(AudioPatch targetPatch)
     {
         background.color = targetPatch.BackgroundColor;
+        
         characterAnimator.SetBool("isDance", true);
         lightAnimator.SetBool("isDance", true);
+        CanvasAnimator.SetBool("NewAudio", true);
     }
-
-    public static void ActivatePatchObjects(AudioPatch patch)
-        => instance.ActivatePatch(patch);
 
     private void ActivateRandom()
     {
         AudioPatch patch = DeterminePatch();
         
         panel.SetPatch(patch);
-        panel.animator.SetTrigger("Start");
+        panel.Animator.SetTrigger("Start");
     }
 
     private AudioPatch DeterminePatch()
@@ -71,5 +73,5 @@ public class AudioPatchesActivator : MonoBehaviour
     }
 
     public void ActivateRandomPatch()
-        => instance.ActivateRandom();
+        => Instance.ActivateRandom();
 }
